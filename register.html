@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register | ShopKu</title>
+
+<style>
+:root{
+    --primary:#4f46e5;
+    --dark:#1f2937;
+    --gray:#6b7280;
+    --light:#f9fafb;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:'Segoe UI',Arial,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:linear-gradient(135deg,#eef2ff,#f0fdf4);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:var(--dark);
+}
+
+/* CARD */
+.register-box{
+    width:100%;
+    max-width:360px;
+    background:#fff;
+    padding:35px 30px;
+    border-radius:18px;
+    box-shadow:0 15px 35px rgba(0,0,0,.07);
+    z-index:1;
+}
+
+.register-box h2{
+    text-align:center;
+    margin-bottom:8px;
+}
+
+.register-box p{
+    text-align:center;
+    font-size:14px;
+    color:var(--gray);
+    margin-bottom:25px;
+}
+
+/* INPUT */
+input{
+    width:100%;
+    padding:12px 14px;
+    margin-bottom:12px;
+    border-radius:10px;
+    border:1px solid #e5e7eb;
+    font-size:14px;
+}
+
+input:focus{
+    outline:none;
+    border-color:var(--primary);
+}
+
+/* BUTTON */
+button{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    background:var(--primary);
+    border:none;
+    border-radius:25px;
+    color:#fff;
+    font-size:14px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    background:#4338ca;
+}
+
+/* LINK */
+.link{
+    margin-top:18px;
+    text-align:center;
+    font-size:14px;
+}
+
+.link a{
+    color:var(--primary);
+    text-decoration:none;
+}
+
+.link a:hover{
+    text-decoration:underline;
+}
+
+/* ======================
+   SUCCESS REGISTER ANIMATION
+   ====================== */
+#successOverlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.5);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    opacity:0;
+    pointer-events:none;
+    transition:.4s;
+    z-index:999;
+}
+
+#successOverlay.show{
+    opacity:1;
+    pointer-events:auto;
+}
+
+.success-box{
+    background:#fff;
+    padding:40px 30px;
+    border-radius:20px;
+    text-align:center;
+    width:300px;
+    animation:pop .5s ease;
+}
+
+@keyframes pop{
+    from{transform:scale(.6);opacity:0}
+    to{transform:scale(1);opacity:1}
+}
+
+.checkmark svg{
+    width:80px;
+    height:80px;
+    stroke:#4f46e5;
+    stroke-width:4;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    fill:none;
+}
+
+.checkmark circle{
+    stroke-dasharray:157;
+    stroke-dashoffset:157;
+    animation:circle .6s forwards;
+}
+
+.checkmark path{
+    stroke-dasharray:48;
+    stroke-dashoffset:48;
+    animation:check .4s .6s forwards;
+}
+
+@keyframes circle{
+    to{stroke-dashoffset:0}
+}
+
+@keyframes check{
+    to{stroke-dashoffset:0}
+}
+
+.success-box h3{
+    margin-top:20px;
+    font-size:20px;
+}
+
+.success-box p{
+    font-size:14px;
+    color:#6b7280;
+    margin-top:8px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="register-box">
+    <h2>Buat Akun</h2>
+    <p>Daftar untuk mulai berbelanja</p>
+
+    <input type="text" placeholder="Nama Lengkap">
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Password">
+
+    <button id="registerBtn">Daftar</button>
+
+    <div class="link">
+        Sudah punya akun?
+        <a href="login.html">Login</a>
+    </div>
+</div>
+
+<!-- SUCCESS OVERLAY -->
+<div id="successOverlay">
+    <div class="success-box">
+        <div class="checkmark">
+            <svg viewBox="0 0 52 52">
+                <circle cx="26" cy="26" r="25"/>
+                <path d="M14 27l7 7 17-17"/>
+            </svg>
+        </div>
+        <h3>Registrasi Berhasil</h3>
+        <p>Akun Anda berhasil dibuat</p>
+    </div>
+</div>
+
+<script>
+document.getElementById('registerBtn').onclick = function(){
+    document.getElementById('successOverlay').classList.add('show');
+}
+</script>
+
+</body>
+</html>

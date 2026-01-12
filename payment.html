@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pembayaran | ShopKu</title>
+
+<style>
+:root{
+    --primary:#4f46e5;
+    --dark:#1f2937;
+    --gray:#6b7280;
+    --light:#f9fafb;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:'Segoe UI',Arial,sans-serif;
+}
+
+body{
+    background:var(--light);
+    color:var(--dark);
+}
+
+/* NAVBAR */
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 40px;
+    background:#fff;
+    box-shadow:0 2px 8px rgba(0,0,0,.04);
+}
+
+nav .logo{
+    font-size:20px;
+    font-weight:600;
+    color:var(--primary);
+}
+
+nav a{
+    margin-left:20px;
+    text-decoration:none;
+    color:var(--dark);
+    font-size:14px;
+}
+
+nav a:hover{
+    color:var(--primary);
+}
+
+/* CONTENT */
+.container{
+    max-width:500px;
+    margin:70px auto;
+    padding:0 20px;
+}
+
+.payment-box{
+    background:#fff;
+    padding:30px;
+    border-radius:16px;
+    box-shadow:0 12px 30px rgba(0,0,0,.06);
+}
+
+.payment-box h2{
+    font-size:22px;
+    margin-bottom:20px;
+}
+
+/* FORM */
+label{
+    font-size:14px;
+    color:var(--gray);
+}
+
+select{
+    width:100%;
+    margin-top:6px;
+    padding:10px;
+    border-radius:10px;
+    border:1px solid #e5e7eb;
+    font-size:14px;
+}
+
+select:focus{
+    outline:none;
+    border-color:var(--primary);
+}
+
+/* TOTAL */
+.total{
+    display:flex;
+    justify-content:space-between;
+    margin-top:25px;
+    font-size:16px;
+    font-weight:600;
+}
+
+/* BUTTON */
+.btn{
+    margin-top:25px;
+    width:100%;
+    padding:12px;
+    background:var(--primary);
+    color:#fff;
+    border:none;
+    border-radius:25px;
+    font-size:14px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#4338ca;
+}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+    nav{
+        padding:14px 20px;
+    }
+}
+
+/* =======================
+   SUCCESS PAYMENT ANIMATION
+   ======================= */
+#successOverlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.5);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    opacity:0;
+    pointer-events:none;
+    transition:.4s;
+    z-index:999;
+}
+
+#successOverlay.show{
+    opacity:1;
+    pointer-events:auto;
+}
+
+.success-box{
+    background:#fff;
+    padding:40px 30px;
+    border-radius:20px;
+    text-align:center;
+    width:300px;
+    animation:pop .5s ease;
+}
+
+@keyframes pop{
+    from{transform:scale(.6);opacity:0}
+    to{transform:scale(1);opacity:1}
+}
+
+.checkmark svg{
+    width:80px;
+    height:80px;
+    stroke:#4f46e5;
+    stroke-width:4;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    fill:none;
+}
+
+.checkmark circle{
+    stroke-dasharray:157;
+    stroke-dashoffset:157;
+    animation:circle .6s forwards;
+}
+
+.checkmark path{
+    stroke-dasharray:48;
+    stroke-dashoffset:48;
+    animation:check .4s .6s forwards;
+}
+
+@keyframes circle{
+    to{stroke-dashoffset:0}
+}
+
+@keyframes check{
+    to{stroke-dashoffset:0}
+}
+
+.success-box h3{
+    margin-top:20px;
+    font-size:20px;
+}
+
+.success-box p{
+    font-size:14px;
+    color:#6b7280;
+    margin-top:8px;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">ShopKu</div>
+    <div>
+        <a href="index.html">Home</a>
+        <a href="products.html">Produk</a>
+        <a href="login.html">Login</a>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="payment-box">
+        <h2>Pembayaran</h2>
+
+        <label>Metode Pembayaran</label>
+        <select>
+            <option>Transfer Bank</option>
+            <option>E-Wallet</option>
+        </select>
+
+        <div class="total">
+            <span>Total</span>
+            <span>Rp 50.000</span>
+        </div>
+
+        <button class="btn">Bayar</button>
+    </div>
+</div>
+
+<!-- SUCCESS OVERLAY -->
+<div id="successOverlay">
+    <div class="success-box">
+        <div class="checkmark">
+            <svg viewBox="0 0 52 52">
+                <circle cx="26" cy="26" r="25"/>
+                <path d="M14 27l7 7 17-17"/>
+            </svg>
+        </div>
+        <h3>Pembayaran Berhasil</h3>
+        <p>Terima kasih telah berbelanja di ShopKu</p>
+    </div>
+</div>
+
+<script>
+document.querySelector('.btn').onclick = function(){
+    document.getElementById('successOverlay').classList.add('show');
+}
+</script>
+
+</body>
+</html>

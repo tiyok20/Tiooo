@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dashboard</title>
+</head>
+<body>
+
+<h2>Dashboard User</h2>
+<a href="orders.html">Pesanan</a><br>
+<a href="profile.html">Profil</a>
+
+</body>
+</html>
